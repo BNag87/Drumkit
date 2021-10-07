@@ -1,44 +1,67 @@
-let keyPressA = document.getElementById("keyA")
-let keyPressS = document.getElementById("keyS")
-let keyPressD = document.getElementById("keyD")
-let keyPressF = document.getElementById("keyF")
-let keyPressG = document.getElementById("keyG")
-let keyPressH = document.getElementById("keyH")
-let keyPressJ = document.getElementById("keyJ")
-let keyPressK = document.getElementById("keyK")
-let keyPressL = document.getElementById("keyL")
+let keyPressA = document.getElementById("keyA");
+let keyPressS = document.getElementById("keyS");
+let keyPressD = document.getElementById("keyD");
+let keyPressF = document.getElementById("keyF");
+let keyPressG = document.getElementById("keyG");
+let keyPressH = document.getElementById("keyH");
+let keyPressJ = document.getElementById("keyJ");
+let keyPressK = document.getElementById("keyK");
+let keyPressL = document.getElementById("keyL");
 
-let iconA = document.getElementById("aKey")
-let iconS = document.getElementById("sKey")
-let iconD = document.getElementById("dKey")
-let iconF = document.getElementById("fKey")
-let iconG = document.getElementById("gKey")
-let iconH = document.getElementById("hKey")
-let iconJ = document.getElementById("jKey")
-let iconK = document.getElementById("kKey")
-let iconL = document.getElementById("lKey")
+const keys = [keyPressA,keyPressS,keyPressD,keyPressF,keyPressG,keyPressH,keyPressJ,keyPressK,keyPressL];
 
-var wav_boom = new Audio('sounds/boom.wav');
-var wav_clap = new Audio('sounds/clap.wav');
-var wav_hihat = new Audio('sounds/hihat.wav');
-var wav_kick = new Audio('sounds/kick.wav');
-var wav_openhat = new Audio('sounds/openhat.wav');
-var wav_ride = new Audio('sounds/ride.wav');
-var wav_snare = new Audio('sounds/snare.wav');
-var wav_tink = new Audio('sounds/tink.wav');
-var wav_tom = new Audio('sounds/openhat.wav');
+let iconA = document.getElementById("aKey");
+let iconS = document.getElementById("sKey");
+let iconD = document.getElementById("dKey");
+let iconF = document.getElementById("fKey");
+let iconG = document.getElementById("gKey");
+let iconH = document.getElementById("hKey");
+let iconJ = document.getElementById("jKey");
+let iconK = document.getElementById("kKey");
+let iconL = document.getElementById("lKey");
 
+const icons = [iconA,iconS,iconD,iconF,iconG,iconH,iconJ,iconK,iconL];
 
-let boxes = [keyPressA, keyPressS, keyPressD, keyPressF, keyPressG, keyPressH, keyPressJ, keyPressK, keyPressL]
+let wav_boom = new Audio('sounds/boom.wav');
+let wav_clap = new Audio('sounds/clap.wav');
+let wav_hihat = new Audio('sounds/hihat.wav');
+let wav_kick = new Audio('sounds/kick.wav');
+let wav_openhat = new Audio('sounds/openhat.wav');
+let wav_ride = new Audio('sounds/ride.wav');
+let wav_snare = new Audio('sounds/snare.wav');
+let wav_tink = new Audio('sounds/tink.wav');
+let wav_tom = new Audio('sounds/openhat.wav');
 
-//mouseover for each item
-// for(i=0; i < boxes.length ; i++)
-// {
-//     boxes[i].addEventListener('mouseover', (event) =>{
-//         console.log("hi! you've moused over element: " +boxes[i])
-//     }
-// }
-//print to console the name of each
+const wavs = [wav_boom, wav_clap, wav_hihat, wav_kick, wav_openhat, wav_ride, wav_snare, wav_tink, wav_tom];
+
+for(let i = 0; i < ((keys.length)); i++)
+{
+    
+    // console.log("i before anything is: "+i);
+    // console.log("keys array, before anything, is: "+keys+". \n\tits length, from 0, is: "+(keys.length-1));
+    // console.log("icons array, before anything, is: "+icons);
+    // console.log("wavs array, before anything, is: "+wavs);
+    
+    keys[i].addEventListener('mousedown', () =>{
+        console.log("inside the function of the loop!");
+        console.log("index i: "+i);
+        // wavs[i].loop=false;
+        wavs[i].play();
+        keys[i].style.background = "rgb(100,20,20)";
+        keys[i].style.boxShadow = "0px 0px rgb(100,20,20)";
+        icons[i].style.background = "rgb(17,49,49)";
+    })
+}
+
+for(let i = 0; i < keys.length; i++){
+    keys[i].addEventListener('mouseup', () =>{
+        wavs[i].pause();
+        wavs[i].currentTime = 0;
+        keys[i].style.backgroundColor = "rgb(128,0,0)";
+        keys[i].style.boxShadow = "3px 3px rgba(255,255,255,0.7)";
+        icons[i].style.background = "rgb(47,79,79)";
+    })
+}
 
 // Function to listen for keyboard presses
 document.addEventListener('keydown', (event) =>{
@@ -63,7 +86,7 @@ document.addEventListener('keydown', (event) =>{
     let iconK = document.getElementById("kKey")
     let iconL = document.getElementById("lKey")
 
-    console.log("Key pressed was: "+event.key)
+    // console.log("Key pressed was: "+event.key)
 
     switch(event.key){
     case "a":

@@ -55,7 +55,7 @@ body{
     text-shadow: 2px 2px black;
 
     background-color: darkslategray;
-    border-color: whitesmoke;
+    border-color: rgb(230,230,230);
     border-style: solid;
     border-width: 1px;
     border-radius: 15px;
